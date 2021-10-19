@@ -1,18 +1,20 @@
 import React from 'react';
-import { mockData } from '../mockData';
+import { NavLink } from 'react-router-dom';
 import './articles.css';
 
-const Articles = () => {
+const Articles = (props) => {
+    // console.log(props);
+
     return (
         <div className='article_wrapper'>
-            {mockData.map((article, index) => {
+            {props.mockData.map((article, index) => {
                 return (
-                    <div key={index} className='article'>
-                        <img src={article.imageUrl} className='article_image' alt='article_image' />
-                        <p className='article_title'>{article.title}</p>
-                        {/* <p>{article.description}</p> */}
-                        {/* <p>{article.expertComment}</p> */}
-                    </div>
+                    <NavLink to={`/articles/` + index}>
+                        <div key={index} className='article'>
+                            <img src={article.imageUrl} className='article_image' alt='article_image' />
+                            <p className='article_title'>{article.title}</p>
+                        </div>
+                    </NavLink>
                 )
             })}
         </div>
